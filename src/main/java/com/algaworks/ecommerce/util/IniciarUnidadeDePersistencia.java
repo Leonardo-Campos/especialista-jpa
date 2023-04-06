@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.model.util;
+package com.algaworks.ecommerce.util;
 
 import com.algaworks.ecommerce.model.Produto;
 
