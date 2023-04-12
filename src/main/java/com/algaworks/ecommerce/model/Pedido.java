@@ -17,7 +17,6 @@ public class Pedido {
 
     @EqualsAndHashCode.Include
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(name = "data_pedido")
