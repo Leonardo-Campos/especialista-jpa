@@ -7,19 +7,27 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@EntityListeners({GenericoListener.class})
+@EntityListeners({ GenericoListener.class })
 @Entity
+@Table(name = "produto")
 public class Produto {
 
     @EqualsAndHashCode.Include
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(name = "data_criacao", updatable = false)
+    private LocalDateTime dataCriacao;
+
+    @Column(name = "data_ultima_atualizacao", insertable = false)
+    private LocalDateTime dataUltimaAtualizacao;
 
     private String nome;
 
@@ -33,6 +41,6 @@ public class Produto {
             inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private List<Categoria> categorias;
 
-    @OneToOne(mappedBy = "produtoId")
+    @OneToOne(mappedBy = "produto")
     private Estoque estoque;
 }

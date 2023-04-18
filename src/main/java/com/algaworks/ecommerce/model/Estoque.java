@@ -20,7 +20,7 @@ public class Estoque {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "produto_id")
-    private Produto produtoId;
+    private Produto produto;
 
     private Integer quantidade;
 }
