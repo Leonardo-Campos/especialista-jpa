@@ -9,6 +9,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -35,6 +36,9 @@ public class Produto {
 
     private BigDecimal preco;
 
+    @Lob
+    private byte[] foto;
+
     @ManyToMany
     @JoinTable(name = "produto_categoria",
             joinColumns = @JoinColumn(name = "produto_id"),
@@ -45,10 +49,10 @@ public class Produto {
     private Estoque estoque;
 
     @ElementCollection
-    @CollectionTable(name = "produto_tag", joinColumns = @JoinColumn(name = "produto_id"))
+    @CollectionTable(name = "produto_tag",
+            joinColumns = @JoinColumn(name = "produto_id"))
     @Column(name = "tag")
     private List<String> tags;
-
 
     @ElementCollection
     @CollectionTable(name = "produto_atributo",
