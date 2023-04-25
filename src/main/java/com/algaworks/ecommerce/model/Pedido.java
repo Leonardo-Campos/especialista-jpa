@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model;
 
+
 import com.algaworks.ecommerce.listener.GenericoListener;
 import com.algaworks.ecommerce.listener.GerarNotaFiscalListener;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@EntityListeners({GerarNotaFiscalListener.class, GenericoListener.class})
+@EntityListeners({ GerarNotaFiscalListener.class, GenericoListener.class })
 @Entity
 @Table(name = "pedido")
 public class Pedido extends EntidadeBaseInteger {
@@ -24,7 +25,7 @@ public class Pedido extends EntidadeBaseInteger {
     @OneToMany(mappedBy = "pedido")
     private List<ItemPedido> itens;
 
-    @Column(name = "data_criacao", updatable = false)
+    @Column(name = "data_criacao", updatable = false, nullable = false)
     private LocalDateTime dataCriacao;
 
     @Column(name = "data_ultima_atualizacao", insertable = false)
@@ -36,7 +37,7 @@ public class Pedido extends EntidadeBaseInteger {
     @OneToOne(mappedBy = "pedido")
     private NotaFiscal notaFiscal;
 
-    @Column(precision = 19, scale = 2, nullable = false)
+    @Column(nullable = false)
     private BigDecimal total;
 
     @Column(length = 30, nullable = false)

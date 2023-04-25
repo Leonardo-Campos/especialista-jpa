@@ -1,5 +1,4 @@
 package com.algaworks.ecommerce.model;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,12 +22,13 @@ public class ItemPedido {
     private Pedido pedido;
 
     @MapsId("produtoId")
-        @ManyToOne(optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "produto_id")
     private Produto produto;
 
-    @Column(name = "preco_produto")
+    @Column(name = "preco_produto", nullable = false)
     private BigDecimal precoProduto;
 
+    @Column(nullable = false)
     private Integer quantidade;
 }

@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,7 @@ import java.util.List;
         uniqueConstraints = { @UniqueConstraint(name = "unq_nome", columnNames = { "nome" }) })
 public class Categoria extends EntidadeBaseInteger {
 
+    @Column(length = 100, nullable = false)
     private String nome;
 
     @ManyToOne
