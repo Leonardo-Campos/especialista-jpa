@@ -12,11 +12,10 @@ import java.util.List;
 
 @Getter
 @Setter
-@EntityListeners({ GerarNotaFiscalListener.class, GenericoListener.class })
+@EntityListeners({GerarNotaFiscalListener.class, GenericoListener.class})
 @Entity
 @Table(name = "pedido")
 public class Pedido extends EntidadeBaseInteger {
-
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "cliente_id")
@@ -37,8 +36,10 @@ public class Pedido extends EntidadeBaseInteger {
     @OneToOne(mappedBy = "pedido")
     private NotaFiscal notaFiscal;
 
+    @Column(precision = 19, scale = 2, nullable = false)
     private BigDecimal total;
 
+    @Column(length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private StatusPedido status;
 
