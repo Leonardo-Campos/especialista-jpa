@@ -11,11 +11,13 @@ import java.util.Map;
 
 @Getter
 @Setter
-@SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"))
+@SecondaryTable(name = "cliente_detalhe",
+        pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"),
+        foreignKey = @ForeignKey(name = "fk_cliente_detalhe_cliente"))
 @Entity
 @Table(name = "cliente",
-        uniqueConstraints = { @UniqueConstraint(name = "unq_cpf", columnNames = { "cpf" }) },
-        indexes = { @Index(name = "idx_nome", columnList = "nome") })
+        uniqueConstraints = {@UniqueConstraint(name = "unq_cpf", columnNames = {"cpf"})},
+        indexes = {@Index(name = "idx_nome", columnList = "nome")})
 public class Cliente extends EntidadeBaseInteger {
 
     @Column(length = 100, nullable = false)
@@ -46,7 +48,7 @@ public class Cliente extends EntidadeBaseInteger {
     private List<Pedido> pedidos;
 
     @PostLoad
-    public void configurarPrimeiroNome(){
+    public void configurarPrimeiroNome() {
         if (nome != null && !nome.isBlank()) {
             int index = nome.indexOf(" ");
             if (index > -1) {
