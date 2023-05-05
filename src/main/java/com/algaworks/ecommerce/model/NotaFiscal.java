@@ -22,6 +22,7 @@ public class NotaFiscal extends EntidadeBaseInteger {
     @Lob
     private byte[] xml;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data_emissao", nullable = false)
     private Date dataEmissao;
 }

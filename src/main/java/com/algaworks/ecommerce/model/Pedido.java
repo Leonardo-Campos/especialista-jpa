@@ -60,9 +60,9 @@ public class Pedido extends EntidadeBaseInteger {
     public void calcularTotal() {
         if (itens != null) {
             total = itens.stream().map(
-                    i -> new BigDecimal(i.getQuantidade()).multiply(i.getPrecoProduto()))
+                            i -> new BigDecimal(i.getQuantidade()).multiply(i.getPrecoProduto()))
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
-        }else {
+        } else {
             total = BigDecimal.ZERO;
         }
     }
