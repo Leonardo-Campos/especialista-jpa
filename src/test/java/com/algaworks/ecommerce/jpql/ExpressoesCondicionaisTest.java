@@ -18,6 +18,8 @@ import java.util.List;
 
 public class ExpressoesCondicionaisTest extends EntityManagerTest {
 
+
+
     @Test
     public void usarExpressaoDiferente() {
         String jpql = "select p from Produto p where p.preco <> 100";
