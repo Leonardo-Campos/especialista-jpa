@@ -4,7 +4,6 @@ import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.dto.ProdutoDTO;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.Pedido;
-import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -13,6 +12,20 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class BasicoJPQLTest extends EntityManagerTest {
+
+    @Test
+    public void usarDistinct() {
+        String jpql = "select distinct p from Pedido p " +
+                " join p.itens i join i.produto pro " +
+                " where pro.id in (1, 2, 3, 4) ";
+
+        TypedQuery<Pedido> typedQuery = entityManager.createQuery(jpql, Pedido.class);
+
+        List<Pedido> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+
+        System.out.println(lista.size());
+    }
 
     @Test
     public void ordenarResultados() {
