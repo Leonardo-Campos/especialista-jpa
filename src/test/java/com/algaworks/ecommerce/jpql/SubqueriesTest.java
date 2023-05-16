@@ -11,6 +11,47 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class SubqueriesTest extends EntityManagerTest {
+    @Test
+    public void perquisarComExistsExercicio() {
+        String jpql = "select p from Produto p " +
+                " where exists " +
+                " (select 1 from ItemPedido where produto = p and precoProduto <> p.preco)";
+
+        TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
+
+        List<Produto> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+
+        lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
+    }
+
+
+    @Test
+    public void perquisarComSubqueryExercicio() {
+        String jpql = "select c from Cliente c where " +
+                " (select count(cliente) from Pedido where cliente = c) >= 2";
+
+        TypedQuery<Cliente> typedQuery = entityManager.createQuery(jpql, Cliente.class);
+
+        List<Cliente> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+
+        lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
+    }
+
+
+    public void pesquisarComINExercicio() {
+        String jpql = "select p from Pedido p where p.id in " +
+                " (select p2.id from ItemPedido i2 " +
+                "      join i2.pedido p2 join i2.produto pro2 join pro2.categorias c2 where c2.id = 2)";
+
+        TypedQuery<Pedido> typedQuery = entityManager.createQuery(jpql, Pedido.class);
+
+        List<Pedido> lista = typedQuery.getResultList();
+        Assert.assertFalse(lista.isEmpty());
+
+        lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
+    }
 
     @Test
     public void pesquisarComExists() {
