@@ -22,7 +22,7 @@ public class SubqueriesTest extends EntityManagerTest {
 
         // Todos os produtos que sempre foram vendidos pelo preco atual.
 //        String jpql = "select p from Produto p where " +
-//                " p.preco = ALL (select precoProduto from ItemPedido where produto = p)";
+//                " p.preco = ALL (select precoProduto from ItemPedido where produto = p)"
 
         TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
 
