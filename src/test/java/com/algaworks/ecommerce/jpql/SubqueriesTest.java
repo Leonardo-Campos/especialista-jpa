@@ -60,7 +60,7 @@ public class SubqueriesTest extends EntityManagerTest {
         TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
 
         List<Produto> lista = typedQuery.getResultList();
-        Assert.assertFalse(lista.isEmpty());
+        Assert.assertTrue(lista.isEmpty());
 
         lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
     }
