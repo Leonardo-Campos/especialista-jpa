@@ -13,6 +13,36 @@ import java.util.List;
 public class SubqueriesTest extends EntityManagerTest {
 
     @Test
+    public void executarConsultaArquivoXMLEspecificoProduto() {
+        TypedQuery<Produto> typedQuery = entityManager
+                .createNamedQuery("Produto.todos", Produto.class);
+
+        List<Produto> lista = typedQuery.getResultList();
+
+        Assert.assertFalse(lista.isEmpty());
+    }
+
+    @Test
+    public void executarConsultaArquivoXMLEspecificoPedido() {
+        TypedQuery<Pedido> typedQuery = entityManager
+                .createNamedQuery("Pedido.todos", Pedido.class);
+
+        List<Pedido> lista = typedQuery.getResultList();
+
+        Assert.assertFalse(lista.isEmpty());
+    }
+
+    @Test
+    public void executarConsultaArquivoXML() {
+        TypedQuery<Pedido> typedQuery = entityManager
+                .createNamedQuery("Pedido.listar", Pedido.class);
+
+        List<Pedido> lista = typedQuery.getResultList();
+
+        Assert.assertFalse(lista.isEmpty());
+    }
+
+    @Test
     public void pesquisarComAllExercicio() {
         // Todos os produtos que sempre foram vendidos pelo mesmo preço.
         String jpql = "select distinct p from ItemPedido ip join ip.produto p where " +
