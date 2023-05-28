@@ -14,6 +14,8 @@ import java.util.List;
 
 public class PathExpressionsTest extends EntityManagerTest {
 
+
+
     @Test
     public void buscarPedidosComProdutoDeIDIgual1Exercicio() {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
