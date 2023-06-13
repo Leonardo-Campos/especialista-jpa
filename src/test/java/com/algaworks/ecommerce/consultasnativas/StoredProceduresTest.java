@@ -19,7 +19,7 @@ public class StoredProceduresTest extends EntityManagerTest {
         storedProcedureQuery.registerStoredProcedureParameter(
                 "ano", Integer.class, ParameterMode.IN);
 
-        storedProcedureQuery.setParameter("ano", 2020);
+        storedProcedureQuery.setParameter("ano", 2023);
 
         List<Cliente> lista = storedProcedureQuery.getResultList();
 
