@@ -5,18 +5,13 @@ import javax.persistence.Persistence;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.util.HashMap;
-import java.util.Map;
-
 public class ExecutarDDL {
 
     public static void main(String[] args) {
         Map<String, String> propriedades = new HashMap<>();
 
         propriedades.put("javax.persistence.jdbc.url",
-                "jdbc:mysql://localhost/ecommerce?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC");
+                "jdbc:mysql://localhost/loja_ecommerce?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC");
 
         propriedades.put("javax.persistence.schema-generation.database.action",
                 "drop-and-create");

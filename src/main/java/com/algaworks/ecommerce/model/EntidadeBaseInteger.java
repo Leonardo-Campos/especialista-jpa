@@ -1,11 +1,12 @@
 package com.algaworks.ecommerce.model;
-
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -20,6 +21,4 @@ public class EntidadeBaseInteger {
 
     @Version
     private Integer versao;
-
-
 }

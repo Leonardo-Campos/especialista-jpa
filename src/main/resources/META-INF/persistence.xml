@@ -8,7 +8,7 @@
         <mapping-file>META-INF/consultas/produto.xml</mapping-file>
         <mapping-file>META-INF/consultas/categoria.xml</mapping-file>
 
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <shared-cache-mode>ALL</shared-cache-mode>
 
         <validation-mode>CALLBACK</validation-mode>
 
@@ -42,16 +42,7 @@
             <property name="javax.persistence.schema-generation.scripts.drop-target"
                       value="C:/tmp/sql/script-remocao-exportado.sql"/>
 
-            <property name="eclipselink.logging.level" value="FINE"/>
-
-            <!--
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
-
-            <property name="hibernate.multiTenancy" value="none" />
-            <property name="hibernate.tenant_identifier_resolver"
-                      value="com.algaworks.ecommerce.hibernate.EcmCurrentTenantIdentifierResolver"/>
-            <property name="hibernate.multi_tenant_connection_provider"
-                      value="com.algaworks.ecommerce.hibernate.EcmMachineMultiTenantConnectionProvider"/>
 
             <property name="hibernate.hikari.maximumPoolSize" value="8" />
             <property name="hibernate.connection.provider_class"
@@ -65,7 +56,6 @@
 
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="false" />
-            -->
         </properties>
     </persistence-unit>
 </persistence>

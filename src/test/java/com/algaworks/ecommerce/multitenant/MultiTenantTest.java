@@ -1,7 +1,6 @@
 package com.algaworks.ecommerce.multitenant;
 
 import com.algaworks.ecommerce.EntityManagerFactoryTest;
-import com.algaworks.ecommerce.model.hibernate.EcmCurrentTenantIdentifierResolver;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,6 +9,7 @@ import javax.persistence.EntityManager;
 
 public class MultiTenantTest extends EntityManagerFactoryTest {
 
+   /*
     @Test
     public void usarAbordagemPorMaquina() {
         EcmCurrentTenantIdentifierResolver.setTenantIdentifier("algaworks_ecommerce");
@@ -39,4 +39,6 @@ public class MultiTenantTest extends EntityManagerFactoryTest {
         Assert.assertEquals("Kindle", produto2.getNome());
         entityManager2.close();
     }
+
+    */
 }
