@@ -5,6 +5,7 @@ import com.algaworks.ecommerce.listener.GenericoListener;
 import com.algaworks.ecommerce.model.converter.BooleanToSimNaoConverter;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -52,10 +53,9 @@ import java.util.List;
 @EntityListeners({ GenericoListener.class })
 @Entity
 @Table(name = "produto",
-        uniqueConstraints = { @UniqueConstraint(name = "unq_nome", columnNames = { "nome" }) },
-        indexes = { @Index(name = "idx_nome", columnList = "nome") })
+        uniqueConstraints = { @UniqueConstraint(name = "unq_produto_nome", columnNames = { "nome" }) },
+        indexes = { @Index(name = "idx_produto_nome", columnList = "nome") })
 public class Produto extends EntidadeBaseInteger {
-
 
     @PastOrPresent
     @NotNull
@@ -70,18 +70,19 @@ public class Produto extends EntidadeBaseInteger {
     @Column(length = 100, nullable = false)
     private String nome;
 
-    @Lob
+    // @Lob
     private String descricao;
 
     @Positive
     private BigDecimal preco;
 
     @Lob
+    @Type(type="org.hibernate.type.BinaryType")
     private byte[] foto;
 
     @Convert(converter = BooleanToSimNaoConverter.class)
     @NotNull
-    @Column(nullable = false)
+    @Column(length = 3, nullable = false)
     private Boolean ativo = Boolean.FALSE;
 
     @ManyToMany

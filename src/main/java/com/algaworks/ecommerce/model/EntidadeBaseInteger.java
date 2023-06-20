@@ -15,13 +15,11 @@ public class EntidadeBaseInteger {
 
     @EqualsAndHashCode.Include
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @Version
     private Integer versao;
 
-    @NotBlank
-    private String tenant;
 
 }

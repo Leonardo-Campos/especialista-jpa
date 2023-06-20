@@ -75,13 +75,13 @@ public class EcmMachineMultiTenantConnectionProvider implements
                 "jdbc:mysql://localhost/algaworks_ecommerce?" +
                         "createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC",
                 "root",
-                "root");
+                "1234");
 
         configurarTenant("loja_ecommerce",
                 "jdbc:mysql://localhost/loja_ecommerce?" +
                         "createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC",
                 "root",
-                "root");
+                "1234");
 
         this.properties = null;
     }

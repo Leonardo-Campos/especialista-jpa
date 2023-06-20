@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.iniciandocomjpa;
+package com.algaworks.ecommerce.criteria.iniciandocomjpa;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Produto;
@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class OperacoesComTransacaoTest extends EntityManagerTest {
 
@@ -139,6 +140,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
         produto.setNome("Câmera Canon");
         produto.setDescricao("A melhor definição para suas fotos.");
         produto.setPreco(new BigDecimal(5000));
+        produto.setDataCriacao(LocalDateTime.now());
 
         entityManager.getTransaction().begin();
         entityManager.persist(produto);

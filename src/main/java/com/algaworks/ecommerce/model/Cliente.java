@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +23,8 @@ import java.util.Map;
         foreignKey = @ForeignKey(name = "fk_cliente_detalhe_cliente"))
 @Entity
 @Table(name = "cliente",
-        uniqueConstraints = { @UniqueConstraint(name = "unq_cpf", columnNames = { "cpf" }) },
-        indexes = { @Index(name = "idx_nome", columnList = "nome") })
+        uniqueConstraints = { @UniqueConstraint(name = "unq_cliente_cpf", columnNames = { "cpf" }) },
+        indexes = { @Index(name = "idx_cliente_nome", columnList = "nome") })
 public class Cliente extends EntidadeBaseInteger {
 
     @NotBlank
@@ -72,3 +69,5 @@ public class Cliente extends EntidadeBaseInteger {
         }
     }
 }
+
+
