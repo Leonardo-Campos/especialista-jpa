@@ -13,7 +13,7 @@ public class Produtos {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Produto buscar(Integer id) {
+    public Produto buscar(Integer id, String tenant) {
         return entityManager.find(Produto.class, id);
     }
 
@@ -21,7 +21,7 @@ public class Produtos {
         return entityManager.merge(produto);
     }
 
-    public List<Produto> listar() {
+    public List<Produto> listar(String tenant) {
         return entityManager
                 .createQuery("select p from Produto p", Produto.class)
                 .getResultList();

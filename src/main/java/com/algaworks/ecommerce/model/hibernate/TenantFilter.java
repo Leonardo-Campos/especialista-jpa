@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.hibernate;
+package com.algaworks.ecommerce.model.hibernate;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ public class TenantFilter implements Filter {
         String serverName = request.getServerName();
         String subdomain = serverName.substring(0, serverName.indexOf("."));
 
-        EcmCurrentTenantIdentifierResolver.setTenantIdentifier(subdomain + "_ecommerce");
+        request.setAttribute("tenant", subdomain);
 
         filterChain.doFilter(servletRequest, servletResponse);
     }

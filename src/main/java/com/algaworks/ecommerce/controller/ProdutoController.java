@@ -1,5 +1,4 @@
 package com.algaworks.ecommerce.controller;
-
 import com.algaworks.ecommerce.model.Produto;
 import com.algaworks.ecommerce.repository.Produtos;
 import com.algaworks.ecommerce.service.ProdutoService;
@@ -23,10 +22,11 @@ public class ProdutoController {
     private ProdutoService service;
 
     @PostMapping("/{id}/editar")
-    public ModelAndView atualizar(@PathVariable Integer id,
+    public ModelAndView atualizar(@RequestAttribute String tenant,
+                                  @PathVariable Integer id,
                                   @RequestParam Map<String, Object> produto,
                                   RedirectAttributes redirectAttributes) {
-        service.atualizar(id, produto);
+        service.atualizar(id, tenant, produto);
 
         redirectAttributes.addFlashAttribute("mensagem", "Atualização feita com sucesso!");
 
@@ -34,15 +34,17 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}/editar")
-    public ModelAndView editar(@PathVariable Integer id) {
-        return novo(produtos.buscar(id));
+    public ModelAndView editar(
+            @RequestAttribute String tenant, @PathVariable Integer id) {
+        return novo(produtos.buscar(id, tenant));
     }
 
     @PostMapping("/novo")
-    public ModelAndView criar(Produto produto,
+    public ModelAndView criar(@RequestAttribute String tenant,
+                              Produto produto,
                               BindingResult bindingResult,
                               RedirectAttributes redirectAttributes) {
-        Produto atualizado = service.criar(produto);
+        Produto atualizado = service.criar(tenant, produto);
 
         redirectAttributes.addFlashAttribute("mensagem", "Registro criado com sucesso!");
 
@@ -58,9 +60,9 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public ModelAndView listar() {
+    public ModelAndView listar(@RequestAttribute String tenant) {
         ModelAndView mv = new ModelAndView("produtos/produtos-lista");
-        mv.addObject("produtos", produtos.listar());
+        mv.addObject("produtos", produtos.listar(tenant));
         return mv;
     }
 }

@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.hibernate;
+package com.algaworks.ecommerce.model.hibernate;
 
 import org.hibernate.engine.config.spi.ConfigurationService;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;

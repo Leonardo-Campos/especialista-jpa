@@ -1,7 +1,7 @@
 package com.algaworks.ecommerce.multitenant;
 
 import com.algaworks.ecommerce.EntityManagerFactoryTest;
-import com.algaworks.ecommerce.hibernate.EcmCurrentTenantIdentifierResolver;
+import com.algaworks.ecommerce.model.hibernate.EcmCurrentTenantIdentifierResolver;
 import com.algaworks.ecommerce.model.Produto;
 import org.junit.Assert;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.hibernate;
+package com.algaworks.ecommerce.model.hibernate;
 
 import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 
